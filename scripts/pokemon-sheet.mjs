@@ -24,12 +24,11 @@ export class PokemonSheet extends ActorSheet {
 
   _onBrowseImage(event) {
     event.preventDefault();
-    const input = event.currentTarget.closest('.pmd-image-picker').querySelector('input[name="img"]');
+    const input = event.currentTarget.closest('.pmd-image-picker').querySelector('input[name="actor-img"]');
     if (!input) return;
     return FilePicker.browse('image', input.value || 'icons/svg/mystery-man.svg', (path) => {
       input.value = path;
-      input.dispatchEvent(new Event('input', { bubbles: true }));
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+      this.actor.update({img: path});
     });
   }
 }

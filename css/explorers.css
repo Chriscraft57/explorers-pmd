@@ -382,7 +382,7 @@
 
 .pmd-sheet {
   font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
+  font-size: clamp(10px, 1.5vw, 13px);
   background: #6b6b6b;
   color: #1a1a1a;
   padding: 6px;
@@ -402,7 +402,7 @@
 /* ------ Labels & Headers ------ */
 .pmd-section-header {
   font-family: "Courier New", Courier, monospace;
-  font-size: 11px;
+  font-size: clamp(9px, 1.2vw, 12px);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -412,7 +412,7 @@
 }
 
 .pmd-sub-label {
-  font-size: 7px;
+  font-size: clamp(6px, 0.8vw, 8px);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -439,7 +439,7 @@
   border: 1px solid #444;
   color: #1a1a1a;
   font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
+  font-size: clamp(10px, 1.3vw, 13px);
   padding: 1px 2px;
   width: 100%;
   /* Remove default browser number arrows for cleanliness */
@@ -723,7 +723,7 @@
 }
 
 .pmd-stat-header {
-  font-size: 11px;
+  font-size: clamp(9px, 1.1vw, 12px);
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -818,7 +818,7 @@
 }
 
 .pmd-skill-label {
-  font-size: 7px;
+  font-size: clamp(6px, 0.9vw, 8px);
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
@@ -1153,15 +1153,28 @@
 }
 
 .pmd-track-pip {
-  width: 12px;
-  height: 12px;
-  background: #444;
-  border: 1px solid #222;
-  margin-right: 3px;
+  width: 18px;
+  height: 18px;
+  background: #c8c8e8;
+  border: 1px solid #333;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 .pmd-track-pip:last-child {
   margin-right: 0;
+}
+
+.pmd-track-pip input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #333;
 }
 
 .pmd-friendship-sub {

@@ -1,69 +1,102 @@
 {
   "Actor": {
-    "types": ["character", "npc"],
+    "types": ["pokemon"],
     "templates": {
-      "base": 
-    {
+      "base": {
         "hp": {
           "value": 20,
           "max": 20
         },
-
         "stats": {
           "atk": 2,
           "def": 2,
           "spatk": 2,
           "spdef": 2,
-          "speed": 2
+          "speed": 2,
+          "atkLabel": "",
+          "defLabel": "",
+          "spatkLabel": "",
+          "spdefLabel": "",
+          "speLabel": "",
+          "iqLabel": ""
         },
-
         "movement": 4,
-
         "level": 1,
-
         "nature": "Jolly",
-
         "types": {
           "primary": "Electric",
           "secondary": ""
-        }
-    }
-    },
-    "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      },
-      "abilities": {
-        "str": {
-          "value": 10
         },
-        "dex": {
-          "value": 10
+        "species": "",
+        "class": "",
+        "specialization": "",
+        "origin": "",
+        "heldItem": "",
+        "skills": {
+          "endurance": 0,
+          "enduranceLabel": "",
+          "strength": 0,
+          "strengthLabel": "",
+          "physResistance": 0,
+          "physResistanceLabel": "",
+          "awareness": 0,
+          "awarenessLabel": "",
+          "spResistance": 0,
+          "spResistanceLabel": "",
+          "movement": 0,
+          "movementLabel": "",
+          "battleMovement": 0,
+          "battleMovementLabel": "",
+          "influence": 0,
+          "influenceLabel": "",
+          "deceive": 0,
+          "deceiveLabel": "",
+          "intuition": 0,
+          "intuitionLabel": "",
+          "tracking": 0,
+          "trackingLabel": "",
+          "ecology": 0,
+          "ecologyLabel": "",
+          "sneak": 0,
+          "sneakLabel": "",
+          "memory": 0,
+          "memoryLabel": "",
+          "logic": 0,
+          "logicLabel": "",
+          "traps": 0,
+          "trapsLabel": ""
         },
-        "con": {
-          "value": 10
+        "iqSkills": "",
+        "friendshipTrack": {
+          "pip1": false,
+          "pip2": false,
+          "pip3": false
         },
-        "int": {
-          "value": 10
+        "friendshipDice": "",
+        "timesCleared": 0,
+        "tokens": {
+          "available": 0,
+          "max": 0
         },
-        "wis": {
-          "value": 10
+        "conditions": "",
+        "abilities": {
+          "col1": "",
+          "col2": ""
         },
-        "cha": {
-          "value": 10
+        "moves": {
+          "move1": "",
+          "move2": "",
+          "move3": "",
+          "move4": ""
         }
       }
     },
-    "npc": {
-      "templates": ["base"],
-      "cr": 0
+    "pokemon": {
+      "templates": ["base"]
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["move", "ability", "item", "class"],
     "templates": {
       "base": {
         "description": ""
@@ -75,34 +108,23 @@
       "weight": 0,
       "formula": "d20 + @str.mod + ceil(@lvl / 2)"
     },
-    "feature": {
+    "ability": {
       "templates": ["base"]
     },
-    "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
+    "class": {
+      "templates": ["base"]
     },
     "move": {
       "templates": ["base"],
-      "power": 0,
-      "accuracy": 100,
-      "pp": 10,
       "type": "Normal",
       "category": "Physical",
+      "power": 0,
+      "pp": 10,
+      "accuracy": 100,
       "targets": "FoeInFront",
       "level": 1,
-      "conditions": {
-        "burn": false,
-        "paralyze": false,
-        "freeze": false,
-        "poison": false,
-        "sleep": false
-      },
-      "otherEffects":{
-        "highCritChance": false,
-        "recoil": 0,
-        "pushBack": 0
-      }
+      "conditions": [],
+      "otherEffects": []
     }
   }
 }

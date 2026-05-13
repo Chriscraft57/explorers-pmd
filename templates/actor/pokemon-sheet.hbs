@@ -24,7 +24,7 @@
           {{/if}}
         </div>
         <div class="pmd-image-picker">
-          <input type="text" name="img" value="{{img}}" placeholder="Image path"/>
+          <input type="text" name="actor-img" value="{{actor.img}}" placeholder="Image path"/>
           <button type="button" class="file-picker" title="Browse image"><i class="fas fa-upload"></i></button>
         </div>
         <div class="pmd-sidebar-label">APPEARANCE</div>
@@ -305,9 +305,11 @@
           <div class="pmd-friendship-area">
             <div class="pmd-section-header">FRIENDSHIP TRACK</div>
             <div class="pmd-friendship-track">
-              <div class="pmd-track-pip"></div>
-              <div class="pmd-track-pip"></div>
-              <div class="pmd-track-pip"></div>
+              <label class="pmd-track-pip"><input type="checkbox" name="system.friendshipTrack.pip1" {{#if system.friendshipTrack.pip1}}checked{{/if}}/></label>
+              <label class="pmd-track-pip"><input type="checkbox" name="system.friendshipTrack.pip2" {{#if system.friendshipTrack.pip2}}checked{{/if}}/></label>
+              <label class="pmd-track-pip"><input type="checkbox" name="system.friendshipTrack.pip3" {{#if system.friendshipTrack.pip3}}checked{{/if}}/></label>
+              <label class="pmd-track-pip"><input type="checkbox" name="system.friendshipTrack.pip4" {{#if system.friendshipTrack.pip4}}checked{{/if}}/></label>
+              <label class="pmd-track-pip"><input type="checkbox" name="system.friendshipTrack.pip4" {{#if system.friendshipTrack.pip5}}checked{{/if}}/></label>
             </div>
             <div class="pmd-friendship-sub">
               <div class="pmd-friendship-field">
