@@ -26,7 +26,7 @@ export class PokemonSheet extends ActorSheet {
     event.preventDefault();
     const input = event.currentTarget.closest('.pmd-image-picker').querySelector('input[name="img"]');
     if (!input) return;
-    return FilePicker.browse('image', input.value or 'icons/svg/mystery-man.svg', (path) => {
+    return FilePicker.browse('image', input.value || 'icons/svg/mystery-man.svg', (path) => {
       input.value = path;
       input.dispatchEvent(new Event('input', { bubbles: true }));
       input.dispatchEvent(new Event('change', { bubbles: true }));
