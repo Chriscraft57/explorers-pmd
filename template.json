@@ -2,19 +2,32 @@
   "Actor": {
     "types": ["character", "npc"],
     "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+      "base": 
+    {
+        "hp": {
+          "value": 20,
+          "max": 20
         },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
+
+        "stats": {
+          "atk": 2,
+          "def": 2,
+          "spatk": 2,
+          "spdef": 2,
+          "speed": 2
         },
-        "biography": ""
-      }
+
+        "movement": 4,
+
+        "level": 1,
+
+        "nature": "Jolly",
+
+        "types": {
+          "primary": "Electric",
+          "secondary": ""
+        }
+    }
     },
     "character": {
       "templates": ["base"],
@@ -68,6 +81,28 @@
     "spell": {
       "templates": ["base"],
       "spellLevel": 1
+    },
+    "move": {
+      "templates": ["base"],
+      "power": 0,
+      "accuracy": 100,
+      "pp": 10,
+      "type": "Normal",
+      "category": "Physical",
+      "targets": "FoeInFront",
+      "level": 1,
+      "conditions": {
+        "burn": false,
+        "paralyze": false,
+        "freeze": false,
+        "poison": false,
+        "sleep": false
+      },
+      "otherEffects":{
+        "highCritChance": false,
+        "recoil": 0,
+        "pushBack": 0
+      }
     }
   }
 }

@@ -1,0 +1,130 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+  {{!-- Header Section --}}
+  <header class="sheet-header">
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{item.name}}" placeholder="CHARACTER NAME"/> [cite: 11]
+      </h1>
+      <div class="grid grid-3col">
+        <div>
+          <label>SPECIES</label> [cite: 6]
+          <input type="text" name="system.species" value="{{system.species}}"/>
+        </div>
+        <div>
+          <label>TYPE(S)</label> [cite: 7]
+          <input type="text" name="system.types" value="{{system.types}}"/>
+        </div>
+        <div>
+          <label>ORIGIN</label> [cite: 38]
+          <input type="text" name="system.origin" value="{{system.origin}}"/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <hr>
+
+  {{!-- Core Stats --}}
+  <section class="main-stats grid grid-4col">
+    <div class="stat-box hp-box">
+      <label>HP</label> [cite: 3]
+      <div class="flexrow">
+        <input type="number" name="system.hp.value" value="{{system.hp.value}}"/> [cite: 9]
+        <span> / </span>
+        <input type="number" name="system.hp.max" value="{{system.hp.max}}"/> [cite: 4]
+      </div>
+      <label>MAXIMUM HP</label> [cite: 4]
+    </div>
+
+    <div class="stat-box">
+      <label>ATK</label> [cite: 8]
+      <input type="number" name="system.stats.atk" value="{{system.stats.atk}}"/>
+    </div>
+
+    <div class="stat-box">
+      <label>DEF / SP.ATK / SP.DEF / SPE</label> [cite: 12]
+      <div class="flexrow">
+        <input type="number" name="system.stats.def" value="{{system.stats.def}}"/>
+        <input type="number" name="system.stats.spatk" value="{{system.stats.spatk}}"/>
+        <input type="number" name="system.stats.spdef" value="{{system.stats.spdef}}"/>
+        <input type="number" name="system.stats.spe" value="{{system.stats.spe}}"/>
+      </div>
+    </div>
+  </section>
+
+  {{!-- Physical & Special Status --}}
+  <div class="status-grid grid grid-2col">
+    <div class="status-section">
+      <label>PHYS STATUS</label> [cite: 16]
+      <textarea name="system.physStatus">{{system.physStatus}}</textarea>
+    </div>
+    <div class="status-section">
+      <label>SP. STATUS</label> [cite: 20]
+      <textarea name="system.spStatus">{{system.spStatus}}</textarea>
+    </div>
+  </div>
+
+  <hr>
+
+  {{!-- Attributes & Exploration --}}
+  <section class="skills-grid grid grid-3col">
+    <div class="skill-group">
+      <h3>APADARIG</h3> 
+      <label>ENDURANCE</label>  <input type="number" name="system.skills.endurance" value="{{system.skills.endurance}}"/>
+      <label>STRENGTH</label>  <input type="number" name="system.skills.strength" value="{{system.skills.strength}}"/>
+      <label>RESISTANCE</label>  <input type="number" name="system.skills.resistance" value="{{system.skills.resistance}}"/>
+      <label>AWARENESS</label>  <input type="number" name="system.skills.awareness" value="{{system.skills.awareness}}"/>
+    </div>
+
+    <div class="skill-group">
+      <h3>EXPLORATION</h3> [cite: 26]
+      <label>INTELLECT</label> [cite: 27] <input type="number" name="system.skills.intellect" value="{{system.skills.intellect}}"/>
+      <label>TRACKING</label> [cite: 28] <input type="number" name="system.skills.tracking" value="{{system.skills.tracking}}"/>
+      <label>ECOLOGY</label> [cite: 29] <input type="number" name="system.skills.ecology" value="{{system.skills.ecology}}"/>
+    </div>
+
+    <div class="skill-group">
+      <h3>SOCIAL</h3> [cite: 25]
+      <label>INFLUENCE</label> [cite: 25] <input type="number" name="system.skills.influence" value="{{system.skills.influence}}"/>
+      <label>DECEIVE</label> [cite: 25] <input type="number" name="system.skills.deceive" value="{{system.skills.deceive}}"/>
+      <label>INTUITION</label> [cite: 34] <input type="number" name="system.skills.intuition" value="{{system.skills.intuition}}"/>
+    </div>
+  </section>
+
+  <hr>
+
+  {{!-- Moves and Items --}}
+  <section class="combat-section grid grid-2col">
+    <div class="moves-list">
+      <label>MOVES</label> [cite: 40]
+      <textarea name="system.moves" rows="5">{{system.moves}}</textarea>
+    </div>
+    <div class="inventory">
+      <label>HELD ITEM</label> [cite: 39]
+      <input type="text" name="system.heldItem" value="{{system.heldItem}}"/>
+      
+      <label>FRIENDSHIP TRACK</label> [cite: 41]
+      <input type="text" name="system.friendshipTrack" value="{{system.friendshipTrack}}"/>
+      <label>FRIENDSHIP DICE</label> [cite: 42]
+      <input type="text" name="system.friendshipDice" value="{{system.friendshipDice}}"/>
+    </div>
+  </section>
+
+  {{!-- Adventure Tokens --}}
+  <footer class="sheet-footer grid grid-3col">
+    <div>
+      <label>ADVENTURE TOKENS</label> 
+      <input type="number" name="system.tokens.total" value="{{system.tokens.total}}"/>
+    </div>
+    <div>
+      <label>AVAILABLE TOKENS</label> 
+      <input type="number" name="system.tokens.available" value="{{system.tokens.available}}"/>
+    </div>
+    <div>
+      <label>MAXIMUM TOKENS</label> 
+      <input type="number" name="system.tokens.max" value="{{system.tokens.max}}"/>
+    </div>
+  </footer>
+
+</form>
