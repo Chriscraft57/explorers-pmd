@@ -23,6 +23,10 @@
             <img src="{{item.img}}" alt="portrait"/>
           {{/if}}
         </div>
+        <div class="pmd-image-picker">
+          <input type="text" name="img" value="{{img}}" placeholder="Image path"/>
+          <button type="button" class="file-picker" title="Browse image"><i class="fas fa-upload"></i></button>
+        </div>
         <div class="pmd-sidebar-label">APPEARANCE</div>
       </div>
 
@@ -81,42 +85,42 @@
           <div class="pmd-stat-header">ATK</div>
           <div class="pmd-stat-box">
             <input type="number" name="system.stats.atk" value="{{system.stats.atk}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.stats.atkLabel" value="{{system.stats.atkLabel}}" placeholder=""/></div>
           </div>
         </div>
         <div class="pmd-stat-col">
           <div class="pmd-stat-header">DEF</div>
           <div class="pmd-stat-box">
             <input type="number" name="system.stats.def" value="{{system.stats.def}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.stats.defLabel" value="{{system.stats.defLabel}}" placeholder=""/></div>
           </div>
         </div>
         <div class="pmd-stat-col">
           <div class="pmd-stat-header">SP.ATK</div>
           <div class="pmd-stat-box">
             <input type="number" name="system.stats.spatk" value="{{system.stats.spatk}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.stats.spatkLabel" value="{{system.stats.spatkLabel}}" placeholder=""/></div>
           </div>
         </div>
         <div class="pmd-stat-col">
           <div class="pmd-stat-header">SP.DEF</div>
           <div class="pmd-stat-box">
             <input type="number" name="system.stats.spdef" value="{{system.stats.spdef}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.stats.spdefLabel" value="{{system.stats.spdefLabel}}" placeholder=""/></div>
           </div>
         </div>
         <div class="pmd-stat-col">
           <div class="pmd-stat-header">SPE</div>
           <div class="pmd-stat-box">
             <input type="number" name="system.stats.spe" value="{{system.stats.spe}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.stats.speLabel" value="{{system.stats.speLabel}}" placeholder=""/></div>
           </div>
         </div>
         <div class="pmd-stat-col">
           <div class="pmd-stat-header">IQ</div>
           <div class="pmd-stat-box">
             <input type="number" name="system.stats.iq" value="{{system.stats.iq}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.stats.iqLabel" value="{{system.stats.iqLabel}}" placeholder=""/></div>
           </div>
         </div>
       </div>
@@ -128,7 +132,7 @@
           <div class="pmd-skill-label">ENDURANCE</div>
           <div class="pmd-skill-box">
             <input type="number" name="system.skills.endurance" value="{{system.skills.endurance}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.skills.enduranceLabel" value="{{system.skills.enduranceLabel}}" placeholder=""/></div>
           </div>
         </div>
 
@@ -136,7 +140,7 @@
           <div class="pmd-skill-label">STRENGTH</div>
           <div class="pmd-skill-box">
             <input type="number" name="system.skills.strength" value="{{system.skills.strength}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.skills.strengthLabel" value="{{system.skills.strengthLabel}}" placeholder=""/></div>
           </div>
         </div>
 
@@ -144,7 +148,7 @@
           <div class="pmd-skill-label">PHYS. STATUS RESISTANCE</div>
           <div class="pmd-skill-box">
             <input type="number" name="system.skills.physResistance" value="{{system.skills.physResistance}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.skills.physResistanceLabel" value="{{system.skills.physResistanceLabel}}" placeholder=""/></div>
           </div>
         </div>
 
@@ -152,7 +156,7 @@
           <div class="pmd-skill-label">AWARENESS</div>
           <div class="pmd-skill-box">
             <input type="number" name="system.skills.awareness" value="{{system.skills.awareness}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.skills.awarenessLabel" value="{{system.skills.awarenessLabel}}" placeholder=""/></div>
           </div>
         </div>
 
@@ -160,7 +164,7 @@
           <div class="pmd-skill-label">SP. STATUS RESISTANCE</div>
           <div class="pmd-skill-box">
             <input type="number" name="system.skills.spResistance" value="{{system.skills.spResistance}}"/>
-            <div class="pmd-dice-box"></div>
+            <div class="pmd-dice-box"><input type="text" name="system.skills.spResistanceLabel" value="{{system.skills.spResistanceLabel}}" placeholder=""/></div>
           </div>
         </div>
 
@@ -170,7 +174,7 @@
             <div class="movement-inner">
               <div class="pmd-sub-label">MOVEMENT SKILL</div>
               <input type="number" name="system.skills.movement" value="{{system.skills.movement}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.movementLabel" value="{{system.skills.movementLabel}}" placeholder=""/></div>
             </div>
             <div class="movement-inner">
               <div class="pmd-sub-label">BATTLE MOVEMENT</div>
@@ -201,11 +205,11 @@
           <div class="pmd-mid-boxes">
             <div class="pmd-mid-box">
               <input type="number" name="system.skills.influence" value="{{system.skills.influence}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.influenceLabel" value="{{system.skills.influenceLabel}}" placeholder=""/></div>
             </div>
             <div class="pmd-mid-box">
               <input type="number" name="system.skills.deceive" value="{{system.skills.deceive}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.deceiveLabel" value="{{system.skills.deceiveLabel}}" placeholder=""/></div>
             </div>
           </div>
           <div class="pmd-mid-sublabels bottom-label">
@@ -214,7 +218,7 @@
           <div class="pmd-mid-boxes">
             <div class="pmd-mid-box single">
               <input type="number" name="system.skills.intuition" value="{{system.skills.intuition}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.intuitionLabel" value="{{system.skills.intuitionLabel}}" placeholder=""/></div>
             </div>
           </div>
         </div>
@@ -227,11 +231,11 @@
           <div class="pmd-mid-boxes">
             <div class="pmd-mid-box">
               <input type="number" name="system.skills.tracking" value="{{system.skills.tracking}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.trackingLabel" value="{{system.skills.trackingLabel}}" placeholder=""/></div>
             </div>
             <div class="pmd-mid-box">
               <input type="number" name="system.skills.ecology" value="{{system.skills.ecology}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.ecologyLabel" value="{{system.skills.ecologyLabel}}" placeholder=""/></div>
             </div>
           </div>
           <div class="pmd-mid-sublabels bottom-label">
@@ -240,7 +244,7 @@
           <div class="pmd-mid-boxes">
             <div class="pmd-mid-box single">
               <input type="number" name="system.skills.sneak" value="{{system.skills.sneak}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.sneakLabel" value="{{system.skills.sneakLabel}}" placeholder=""/></div>
             </div>
           </div>
         </div>
@@ -253,11 +257,11 @@
           <div class="pmd-mid-boxes">
             <div class="pmd-mid-box">
               <input type="number" name="system.skills.memory" value="{{system.skills.memory}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.memoryLabel" value="{{system.skills.memoryLabel}}" placeholder=""/></div>
             </div>
             <div class="pmd-mid-box">
               <input type="number" name="system.skills.logic" value="{{system.skills.logic}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.logicLabel" value="{{system.skills.logicLabel}}" placeholder=""/></div>
             </div>
           </div>
           <div class="pmd-mid-sublabels bottom-label">
@@ -266,7 +270,7 @@
           <div class="pmd-mid-boxes">
             <div class="pmd-mid-box single">
               <input type="number" name="system.skills.traps" value="{{system.skills.traps}}"/>
-              <div class="pmd-dice-box"></div>
+              <div class="pmd-dice-box"><input type="text" name="system.skills.trapsLabel" value="{{system.skills.trapsLabel}}" placeholder=""/></div>
             </div>
           </div>
         </div>
