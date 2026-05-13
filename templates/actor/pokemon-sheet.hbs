@@ -1,130 +1,361 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
+<form class="{{cssClass}} pmd-sheet" autocomplete="off">
 
-  {{!-- Header Section --}}
-  <header class="sheet-header">
-    <div class="header-fields">
-      <h1 class="charname">
-        <input name="name" type="text" value="{{item.name}}" placeholder="CHARACTER NAME"/> [cite: 11]
-      </h1>
-      <div class="grid grid-3col">
-        <div>
-          <label>SPECIES</label> [cite: 6]
-          <input type="text" name="system.species" value="{{system.species}}"/>
-        </div>
-        <div>
-          <label>TYPE(S)</label> [cite: 7]
-          <input type="text" name="system.types" value="{{system.types}}"/>
-        </div>
-        <div>
-          <label>ORIGIN</label> [cite: 38]
-          <input type="text" name="system.origin" value="{{system.origin}}"/>
-        </div>
-      </div>
+  {{!-- TOP HEADER: Logo + Name --}}
+  <div class="pmd-header">
+    <div class="pmd-logo">
+      <img src="systems/your-system/assets/logo.png" alt="PMD Explorers" onerror="this.style.display='none'"/>
     </div>
-  </header>
-
-  <hr>
-
-  {{!-- Core Stats --}}
-  <section class="main-stats grid grid-4col">
-    <div class="stat-box hp-box">
-      <label>HP</label> [cite: 3]
-      <div class="flexrow">
-        <input type="number" name="system.hp.value" value="{{system.hp.value}}"/> [cite: 9]
-        <span> / </span>
-        <input type="number" name="system.hp.max" value="{{system.hp.max}}"/> [cite: 4]
-      </div>
-      <label>MAXIMUM HP</label> [cite: 4]
-    </div>
-
-    <div class="stat-box">
-      <label>ATK</label> [cite: 8]
-      <input type="number" name="system.stats.atk" value="{{system.stats.atk}}"/>
-    </div>
-
-    <div class="stat-box">
-      <label>DEF / SP.ATK / SP.DEF / SPE</label> [cite: 12]
-      <div class="flexrow">
-        <input type="number" name="system.stats.def" value="{{system.stats.def}}"/>
-        <input type="number" name="system.stats.spatk" value="{{system.stats.spatk}}"/>
-        <input type="number" name="system.stats.spdef" value="{{system.stats.spdef}}"/>
-        <input type="number" name="system.stats.spe" value="{{system.stats.spe}}"/>
-      </div>
-    </div>
-  </section>
-
-  {{!-- Physical & Special Status --}}
-  <div class="status-grid grid grid-2col">
-    <div class="status-section">
-      <label>PHYS STATUS</label> [cite: 16]
-      <textarea name="system.physStatus">{{system.physStatus}}</textarea>
-    </div>
-    <div class="status-section">
-      <label>SP. STATUS</label> [cite: 20]
-      <textarea name="system.spStatus">{{system.spStatus}}</textarea>
+    <div class="pmd-name-block">
+      <input class="pmd-name-input" name="name" type="text" value="{{item.name}}" placeholder="CHARACTER NAME"/>
     </div>
   </div>
 
-  <hr>
+  {{!-- BODY: Two-column layout --}}
+  <div class="pmd-body">
 
-  {{!-- Attributes & Exploration --}}
-  <section class="skills-grid grid grid-3col">
-    <div class="skill-group">
-      <h3>APADARIG</h3> 
-      <label>ENDURANCE</label>  <input type="number" name="system.skills.endurance" value="{{system.skills.endurance}}"/>
-      <label>STRENGTH</label>  <input type="number" name="system.skills.strength" value="{{system.skills.strength}}"/>
-      <label>RESISTANCE</label>  <input type="number" name="system.skills.resistance" value="{{system.skills.resistance}}"/>
-      <label>AWARENESS</label>  <input type="number" name="system.skills.awareness" value="{{system.skills.awareness}}"/>
+    {{!-- LEFT SIDEBAR --}}
+    <div class="pmd-sidebar">
+
+      <div class="pmd-portrait-box">
+        {{!-- Portrait / Appearance --}}
+        <div class="pmd-portrait">
+          {{#if item.img}}
+            <img src="{{item.img}}" alt="portrait"/>
+          {{/if}}
+        </div>
+        <div class="pmd-sidebar-label">APPEARANCE</div>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">SPECIES</div>
+        <input type="text" name="system.species" value="{{system.species}}"/>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">TYPE(S)</div>
+        <input type="text" name="system.types" value="{{system.types}}"/>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">CLASS</div>
+        <input type="text" name="system.class" value="{{system.class}}"/>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">SPECIALIZATION</div>
+        <input type="text" name="system.specialization" value="{{system.specialization}}"/>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">NATURE / AURA</div>
+        <input type="text" name="system.nature" value="{{system.nature}}"/>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">ORIGIN</div>
+        <input type="text" name="system.origin" value="{{system.origin}}"/>
+      </div>
+
+      <div class="pmd-sidebar-field">
+        <div class="pmd-sidebar-label">HELD ITEM</div>
+        <input type="text" name="system.heldItem" value="{{system.heldItem}}"/>
+      </div>
+
+    </div>{{!-- end sidebar --}}
+
+    {{!-- RIGHT MAIN CONTENT --}}
+    <div class="pmd-main">
+
+      {{!-- STAT ROW: HP ATK DEF SP.ATK SP.DEF SPE IQ --}}
+      <div class="pmd-stats-section">
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">HP</div>
+          <div class="pmd-stat-box hp-box">
+            <div class="pmd-sub-label">MAXIMUM HP</div>
+            <input type="number" name="system.hp.max" value="{{system.hp.max}}"/>
+            <div class="pmd-sub-label">CURRENT HP</div>
+            <input type="number" name="system.hp.value" value="{{system.hp.value}}"/>
+          </div>
+        </div>
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">ATK</div>
+          <div class="pmd-stat-box">
+            <input type="number" name="system.stats.atk" value="{{system.stats.atk}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">DEF</div>
+          <div class="pmd-stat-box">
+            <input type="number" name="system.stats.def" value="{{system.stats.def}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">SP.ATK</div>
+          <div class="pmd-stat-box">
+            <input type="number" name="system.stats.spatk" value="{{system.stats.spatk}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">SP.DEF</div>
+          <div class="pmd-stat-box">
+            <input type="number" name="system.stats.spdef" value="{{system.stats.spdef}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">SPE</div>
+          <div class="pmd-stat-box">
+            <input type="number" name="system.stats.spe" value="{{system.stats.spe}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+        <div class="pmd-stat-col">
+          <div class="pmd-stat-header">IQ</div>
+          <div class="pmd-stat-box">
+            <input type="number" name="system.stats.iq" value="{{system.stats.iq}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- SKILLS ROW: Endurance / Strength / Phys.Status Resistance / Awareness / Sp.Status Resistance / Movement / IQ Skills --}}
+      <div class="pmd-skills-section">
+
+        <div class="pmd-skill-col">
+          <div class="pmd-skill-label">ENDURANCE</div>
+          <div class="pmd-skill-box">
+            <input type="number" name="system.skills.endurance" value="{{system.skills.endurance}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+
+        <div class="pmd-skill-col">
+          <div class="pmd-skill-label">STRENGTH</div>
+          <div class="pmd-skill-box">
+            <input type="number" name="system.skills.strength" value="{{system.skills.strength}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+
+        <div class="pmd-skill-col">
+          <div class="pmd-skill-label">PHYS. STATUS RESISTANCE</div>
+          <div class="pmd-skill-box">
+            <input type="number" name="system.skills.physResistance" value="{{system.skills.physResistance}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+
+        <div class="pmd-skill-col">
+          <div class="pmd-skill-label">AWARENESS</div>
+          <div class="pmd-skill-box">
+            <input type="number" name="system.skills.awareness" value="{{system.skills.awareness}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+
+        <div class="pmd-skill-col">
+          <div class="pmd-skill-label">SP. STATUS RESISTANCE</div>
+          <div class="pmd-skill-box">
+            <input type="number" name="system.skills.spResistance" value="{{system.skills.spResistance}}"/>
+            <div class="pmd-dice-box"></div>
+          </div>
+        </div>
+
+        <div class="pmd-skill-col movement-col">
+          <div class="pmd-skill-label">MOVEMENT</div>
+          <div class="pmd-skill-box movement-box">
+            <div class="movement-inner">
+              <div class="pmd-sub-label">MOVEMENT SKILL</div>
+              <input type="number" name="system.skills.movement" value="{{system.skills.movement}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+            <div class="movement-inner">
+              <div class="pmd-sub-label">BATTLE MOVEMENT</div>
+              <input type="number" name="system.skills.battleMovement" value="{{system.skills.battleMovement}}"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="pmd-skill-col">
+          <div class="pmd-skill-label">IQ SKILLS</div>
+          <div class="pmd-skill-box">
+            <textarea name="system.iqSkills">{{system.iqSkills}}</textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pmd-divider"></div>
+
+      {{!-- SOCIAL / EXPLORATION / INTELLECT --}}
+      <div class="pmd-mid-section">
+
+        <div class="pmd-mid-group">
+          <div class="pmd-mid-header">SOCIAL</div>
+          <div class="pmd-mid-sublabels">
+            <span>INFLUENCE</span><span>DECEIVE</span>
+          </div>
+          <div class="pmd-mid-boxes">
+            <div class="pmd-mid-box">
+              <input type="number" name="system.skills.influence" value="{{system.skills.influence}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+            <div class="pmd-mid-box">
+              <input type="number" name="system.skills.deceive" value="{{system.skills.deceive}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+          </div>
+          <div class="pmd-mid-sublabels bottom-label">
+            <span>INTUITION</span>
+          </div>
+          <div class="pmd-mid-boxes">
+            <div class="pmd-mid-box single">
+              <input type="number" name="system.skills.intuition" value="{{system.skills.intuition}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pmd-mid-group">
+          <div class="pmd-mid-header">EXPLORATION</div>
+          <div class="pmd-mid-sublabels">
+            <span>TRACKING</span><span>ECOLOGY</span>
+          </div>
+          <div class="pmd-mid-boxes">
+            <div class="pmd-mid-box">
+              <input type="number" name="system.skills.tracking" value="{{system.skills.tracking}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+            <div class="pmd-mid-box">
+              <input type="number" name="system.skills.ecology" value="{{system.skills.ecology}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+          </div>
+          <div class="pmd-mid-sublabels bottom-label">
+            <span>SNEAK</span>
+          </div>
+          <div class="pmd-mid-boxes">
+            <div class="pmd-mid-box single">
+              <input type="number" name="system.skills.sneak" value="{{system.skills.sneak}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pmd-mid-group">
+          <div class="pmd-mid-header">INTELLECT</div>
+          <div class="pmd-mid-sublabels">
+            <span>MEMORY</span><span>LOGIC</span>
+          </div>
+          <div class="pmd-mid-boxes">
+            <div class="pmd-mid-box">
+              <input type="number" name="system.skills.memory" value="{{system.skills.memory}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+            <div class="pmd-mid-box">
+              <input type="number" name="system.skills.logic" value="{{system.skills.logic}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+          </div>
+          <div class="pmd-mid-sublabels bottom-label">
+            <span>TRAPS</span>
+          </div>
+          <div class="pmd-mid-boxes">
+            <div class="pmd-mid-box single">
+              <input type="number" name="system.skills.traps" value="{{system.skills.traps}}"/>
+              <div class="pmd-dice-box"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pmd-divider"></div>
+
+      {{!-- MOVES + FRIENDSHIP + TOKENS --}}
+      <div class="pmd-lower-section">
+
+        <div class="pmd-moves-area">
+          <div class="pmd-section-header">MOVES</div>
+          <div class="pmd-moves-grid">
+            <div class="pmd-move-box">
+              <textarea name="system.moves.move1">{{system.moves.move1}}</textarea>
+            </div>
+            <div class="pmd-move-box">
+              <textarea name="system.moves.move2">{{system.moves.move2}}</textarea>
+            </div>
+            <div class="pmd-move-box">
+              <textarea name="system.moves.move3">{{system.moves.move3}}</textarea>
+            </div>
+            <div class="pmd-move-box">
+              <textarea name="system.moves.move4">{{system.moves.move4}}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="pmd-right-lower">
+
+          <div class="pmd-friendship-area">
+            <div class="pmd-section-header">FRIENDSHIP TRACK</div>
+            <div class="pmd-friendship-track">
+              <div class="pmd-track-pip"></div>
+              <div class="pmd-track-pip"></div>
+              <div class="pmd-track-pip"></div>
+            </div>
+            <div class="pmd-friendship-sub">
+              <div class="pmd-friendship-field">
+                <div class="pmd-sub-label">FRIENDSHIP DICE</div>
+                <input type="text" name="system.friendshipDice" value="{{system.friendshipDice}}"/>
+              </div>
+              <div class="pmd-friendship-field">
+                <div class="pmd-sub-label">TIMES CLEARED</div>
+                <input type="number" name="system.timesCleared" value="{{system.timesCleared}}"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="pmd-tokens-area">
+            <div class="pmd-section-header">ADVENTURE TOKENS</div>
+            <div class="pmd-tokens-sub">
+              <div class="pmd-token-field">
+                <div class="pmd-sub-label">AVAILABLE TOKENS</div>
+                <input type="number" name="system.tokens.available" value="{{system.tokens.available}}"/>
+              </div>
+              <div class="pmd-token-field">
+                <div class="pmd-sub-label">MAXIMUM TOKENS</div>
+                <input type="number" name="system.tokens.max" value="{{system.tokens.max}}"/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>{{!-- end pmd-main --}}
+
+  </div>{{!-- end pmd-body --}}
+
+  {{!-- BOTTOM ROW: Conditions + Abilities/Features/Rare Qualities --}}
+  <div class="pmd-bottom-section">
+
+    <div class="pmd-conditions">
+      <div class="pmd-section-header">CONDITIONS</div>
+      <textarea name="system.conditions">{{system.conditions}}</textarea>
     </div>
 
-    <div class="skill-group">
-      <h3>EXPLORATION</h3> [cite: 26]
-      <label>INTELLECT</label> [cite: 27] <input type="number" name="system.skills.intellect" value="{{system.skills.intellect}}"/>
-      <label>TRACKING</label> [cite: 28] <input type="number" name="system.skills.tracking" value="{{system.skills.tracking}}"/>
-      <label>ECOLOGY</label> [cite: 29] <input type="number" name="system.skills.ecology" value="{{system.skills.ecology}}"/>
+    <div class="pmd-abilities">
+      <div class="pmd-section-header">ABILITIES, FEATURES AND RARE QUALITIES</div>
+      <div class="pmd-abilities-grid">
+        <textarea name="system.abilities.col1">{{system.abilities.col1}}</textarea>
+        <textarea name="system.abilities.col2">{{system.abilities.col2}}</textarea>
+      </div>
     </div>
 
-    <div class="skill-group">
-      <h3>SOCIAL</h3> [cite: 25]
-      <label>INFLUENCE</label> [cite: 25] <input type="number" name="system.skills.influence" value="{{system.skills.influence}}"/>
-      <label>DECEIVE</label> [cite: 25] <input type="number" name="system.skills.deceive" value="{{system.skills.deceive}}"/>
-      <label>INTUITION</label> [cite: 34] <input type="number" name="system.skills.intuition" value="{{system.skills.intuition}}"/>
-    </div>
-  </section>
-
-  <hr>
-
-  {{!-- Moves and Items --}}
-  <section class="combat-section grid grid-2col">
-    <div class="moves-list">
-      <label>MOVES</label> [cite: 40]
-      <textarea name="system.moves" rows="5">{{system.moves}}</textarea>
-    </div>
-    <div class="inventory">
-      <label>HELD ITEM</label> [cite: 39]
-      <input type="text" name="system.heldItem" value="{{system.heldItem}}"/>
-      
-      <label>FRIENDSHIP TRACK</label> [cite: 41]
-      <input type="text" name="system.friendshipTrack" value="{{system.friendshipTrack}}"/>
-      <label>FRIENDSHIP DICE</label> [cite: 42]
-      <input type="text" name="system.friendshipDice" value="{{system.friendshipDice}}"/>
-    </div>
-  </section>
-
-  {{!-- Adventure Tokens --}}
-  <footer class="sheet-footer grid grid-3col">
-    <div>
-      <label>ADVENTURE TOKENS</label> 
-      <input type="number" name="system.tokens.total" value="{{system.tokens.total}}"/>
-    </div>
-    <div>
-      <label>AVAILABLE TOKENS</label> 
-      <input type="number" name="system.tokens.available" value="{{system.tokens.available}}"/>
-    </div>
-    <div>
-      <label>MAXIMUM TOKENS</label> 
-      <input type="number" name="system.tokens.max" value="{{system.tokens.max}}"/>
-    </div>
-  </footer>
+  </div>
 
 </form>
+

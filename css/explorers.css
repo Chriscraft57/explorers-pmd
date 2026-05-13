@@ -364,3 +364,948 @@
 .boilerplate .effects .item .effect-controls {
   border: none;
 }
+
+
+/* ============================================================
+   PMD EXPLORERS — CHARACTER SHEET CSS
+   FoundryVTT-compatible: no flexbox gap shorthand issues,
+   no CSS Grid shorthand that older Electron versions reject,
+   all layouts use explicit flex properties.
+   ============================================================ */
+
+/* ------ Reset / Base ------ */
+.pmd-sheet * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.pmd-sheet {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  background: #6b6b6b;
+  color: #1a1a1a;
+  padding: 6px;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+/* ------ Labels & Headers ------ */
+.pmd-section-header {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #1a1a1a;
+  padding: 2px 0;
+}
+
+.pmd-sub-label {
+  font-size: 7px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #333;
+  line-height: 1.2;
+}
+
+.pmd-sidebar-label {
+  font-size: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  padding: 2px 0 1px;
+}
+
+/* ------ Shared input/textarea style ------ */
+.pmd-sheet input[type="text"],
+.pmd-sheet input[type="number"],
+.pmd-sheet textarea {
+  background: #c8c8e8;
+  border: 1px solid #444;
+  color: #1a1a1a;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  padding: 1px 2px;
+  width: 100%;
+  /* Remove default browser number arrows for cleanliness */
+  -moz-appearance: textfield;
+}
+
+.pmd-sheet input[type="number"]::-webkit-inner-spin-button,
+.pmd-sheet input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pmd-sheet textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+/* Dice pip box (small blue square bottom-right of stat boxes) */
+.pmd-dice-box {
+  width: 10px;
+  height: 10px;
+  background: #c8c8e8;
+  border: 1px solid #444;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-top: auto;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+/* ============================================================
+   TOP HEADER
+   ============================================================ */
+.pmd-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.pmd-logo {
+  width: 100px;
+  min-width: 100px;
+  height: 50px;
+  background: #888;
+  border: 1px solid #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-right: 6px;
+  overflow: hidden;
+}
+
+.pmd-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pmd-name-block {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.pmd-name-input {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px !important;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #333 !important;
+  width: 100%;
+  color: #1a1a1a;
+  padding: 2px 0;
+}
+
+/* ============================================================
+   BODY (sidebar + main)
+   ============================================================ */
+.pmd-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   LEFT SIDEBAR
+   ============================================================ */
+.pmd-sidebar {
+  width: 90px;
+  min-width: 90px;
+  background: #7a7a7a;
+  border: 2px solid #333;
+  padding: 3px;
+  margin-right: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.pmd-portrait-box {
+  margin-bottom: 3px;
+}
+
+.pmd-portrait {
+  width: 100%;
+  height: 80px;
+  background: #c8c8e8;
+  border: 2px solid #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.pmd-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pmd-sidebar-field {
+  margin-bottom: 3px;
+}
+
+.pmd-sidebar-field input {
+  height: 20px;
+  background: #c8c8e8;
+  border: 1px solid #333;
+}
+
+/* ============================================================
+   RIGHT MAIN CONTENT
+   ============================================================ */
+.pmd-main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #7a7a7a;
+  border: 2px solid #333;
+  padding: 3px;
+}
+
+.pmd-divider {
+  height: 2px;
+  background: #333;
+  margin: 3px 0;
+}
+
+/* ============================================================
+   STATS ROW (HP, ATK, DEF, SP.ATK, SP.DEF, SPE, IQ)
+   ============================================================ */
+.pmd-stats-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  margin-bottom: 3px;
+}
+
+.pmd-stat-col {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.pmd-stat-col:last-child {
+  margin-right: 0;
+}
+
+.pmd-stat-header {
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  padding: 1px 0;
+}
+
+.pmd-stat-box {
+  background: #c8c8e8;
+  border: 2px solid #333;
+  width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2px;
+  position: relative;
+  min-height: 50px;
+}
+
+.pmd-stat-box input[type="number"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.hp-box {
+  padding: 2px;
+}
+
+.hp-box .pmd-sub-label {
+  font-size: 6px;
+}
+
+.hp-box input[type="number"] {
+  height: 18px;
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+}
+
+/* ============================================================
+   SKILLS ROW (7 columns)
+   ============================================================ */
+.pmd-skills-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  margin-bottom: 3px;
+}
+
+.pmd-skill-col {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.pmd-skill-col:last-child {
+  margin-right: 0;
+}
+
+.pmd-skill-label {
+  font-size: 7px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.3px;
+  color: #1a1a1a;
+  padding-bottom: 1px;
+  line-height: 1.2;
+  min-height: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.pmd-skill-box {
+  background: #c8c8e8;
+  border: 2px solid #333;
+  width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2px;
+  min-height: 44px;
+}
+
+.pmd-skill-box input[type="number"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  text-align: center;
+  font-size: 10px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.pmd-skill-box textarea {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 8px;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Movement column wider with sub-sections */
+.movement-col {
+  -webkit-box-flex: 1.4;
+  -ms-flex: 1.4;
+  flex: 1.4;
+}
+
+.movement-box {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 0;
+}
+
+.movement-inner {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2px;
+  border-right: 1px solid #333;
+}
+
+.movement-inner:last-child {
+  border-right: none;
+}
+
+.movement-inner input[type="number"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+/* ============================================================
+   SOCIAL / EXPLORATION / INTELLECT (middle section)
+   ============================================================ */
+.pmd-mid-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 3px;
+}
+
+.pmd-mid-group {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border: 2px solid #333;
+  background: #7a7a7a;
+  padding: 2px;
+  margin-right: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.pmd-mid-group:last-child {
+  margin-right: 0;
+}
+
+.pmd-mid-header {
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  padding-bottom: 1px;
+}
+
+.pmd-mid-sublabels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.pmd-mid-sublabels span {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 7px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.pmd-mid-sublabels.bottom-label {
+  margin-top: 3px;
+}
+
+.pmd-mid-boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.pmd-mid-box {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #c8c8e8;
+  border: 2px solid #333;
+  min-height: 40px;
+  margin-right: 2px;
+  padding: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+.pmd-mid-box:last-child {
+  margin-right: 0;
+}
+
+.pmd-mid-box.single {
+  max-width: 50%;
+}
+
+.pmd-mid-box input[type="number"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 10px;
+}
+
+/* ============================================================
+   LOWER SECTION (Moves + Friendship/Tokens)
+   ============================================================ */
+.pmd-lower-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.pmd-moves-area {
+  -webkit-box-flex: 1.5;
+  -ms-flex: 1.5;
+  flex: 1.5;
+  margin-right: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.pmd-moves-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.pmd-move-box {
+  width: calc(50% - 1px);
+  background: #c8c8e8;
+  border: 2px solid #333;
+  min-height: 40px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  padding: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.pmd-move-box:nth-child(2n) {
+  margin-right: 0;
+}
+
+.pmd-move-box textarea {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 9px;
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Right lower area */
+.pmd-right-lower {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* Friendship */
+.pmd-friendship-area {
+  border: 2px solid #333;
+  background: #7a7a7a;
+  padding: 3px;
+  margin-bottom: 3px;
+}
+
+.pmd-friendship-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 3px 0;
+}
+
+.pmd-track-pip {
+  width: 12px;
+  height: 12px;
+  background: #444;
+  border: 1px solid #222;
+  margin-right: 3px;
+}
+
+.pmd-track-pip:last-child {
+  margin-right: 0;
+}
+
+.pmd-friendship-sub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.pmd-friendship-field {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2px;
+}
+
+.pmd-friendship-field:last-child {
+  margin-right: 0;
+}
+
+.pmd-friendship-field input {
+  height: 20px;
+  background: #c8c8e8;
+  border: 1px solid #333;
+}
+
+/* Tokens */
+.pmd-tokens-area {
+  border: 2px solid #333;
+  background: #7a7a7a;
+  padding: 3px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.pmd-tokens-sub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.pmd-token-field {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 2px;
+}
+
+.pmd-token-field:last-child {
+  margin-right: 0;
+}
+
+.pmd-token-field input {
+  height: 24px;
+  background: #c8c8e8;
+  border: 1px solid #333;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ============================================================
+   BOTTOM ROW (Conditions + Abilities)
+   ============================================================ */
+.pmd-bottom-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  min-height: 160px;
+}
+
+.pmd-conditions {
+  width: 90px;
+  min-width: 90px;
+  border: 2px solid #333;
+  background: #7a7a7a;
+  padding: 3px;
+  margin-right: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.pmd-conditions textarea {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #c8c8e8;
+  border: 1px solid #333;
+  font-size: 8px;
+  resize: none;
+  width: 100%;
+}
+
+.pmd-abilities {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border: 2px solid #333;
+  background: #7a7a7a;
+  padding: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.pmd-abilities-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.pmd-abilities-grid textarea {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #c8c8e8;
+  border: 1px solid #333;
+  font-size: 8px;
+  resize: none;
+  margin-right: 3px;
+  line-height: 1.8;
+}
+
+.pmd-abilities-grid textarea:last-child {
+  margin-right: 0;
+}
+
+/* ============================================================
+   FOUNDRY VTT COMPATIBILITY OVERRIDES
+   Foundry injects .sheet, .window-content padding; counteract
+   ============================================================ */
+.app.sheet .window-content {
+  padding: 0;
+  overflow-y: auto;
+}
+
+.pmd-sheet {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Prevent Foundry's default label styles from breaking layout */
+.pmd-sheet label {
+  display: block;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent Foundry's flexrow/flexcol from overriding our layout */
+.pmd-sheet .flexrow,
+.pmd-sheet .flexcol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}

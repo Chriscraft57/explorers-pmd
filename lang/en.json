@@ -29,8 +29,8 @@
 
   "TYPES": {
     "Actor": {
-      "character": "Character",
-      "npc": "NPC"
+      "npc": "NPC",
+      "pokemon": "Player Pokemon"
     },
     "Item": {
       "item": "Item",
