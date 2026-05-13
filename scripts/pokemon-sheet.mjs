@@ -11,9 +11,8 @@ export class PokemonSheet extends ActorSheet {
 
   getData() {
     const context = super.getData();
-
+    context.actor = this.actor;
     context.system = this.actor.system;
-
     return context;
   }
 

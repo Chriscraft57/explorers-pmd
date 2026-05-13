@@ -6,7 +6,7 @@
       <img src="systems/explorers-pmd/assets/logo_mono.png" alt="PMD Explorers" onerror="this.style.display='none'"/>
     </div>
     <div class="pmd-name-block">
-      <input class="pmd-name-input" name="name" type="text" value="{{item.name}}" placeholder="CHARACTER NAME"/>
+      <input class="pmd-name-input" name="name" type="text" value="{{actor.name}}" placeholder="CHARACTER NAME"/>
     </div>
   </div>
 
@@ -19,8 +19,8 @@
       <div class="pmd-portrait-box">
         {{!-- Portrait / Appearance --}}
         <div class="pmd-portrait">
-          {{#if item.img}}
-            <img src="{{item.img}}" alt="portrait"/>
+          {{#if actor.img}}
+            <img src="{{actor.img}}" alt="portrait"/>
           {{/if}}
         </div>
         <div class="pmd-image-picker">
